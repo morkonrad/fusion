@@ -13,7 +13,7 @@ Requierments ?
 ---------------
 1. C++11 compiler
 2. CMake 3.x
-3. CUDA lib and headers
+3. CUDA libs and headers
 
 How to build ?
 ---------------
