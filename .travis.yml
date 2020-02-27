@@ -36,6 +36,9 @@ before_install:
   #- sudo apt install -y cuda-core-${CUDA_SHORT/./-} cuda-cudart-dev-${CUDA_SHORT/./-} cuda-cufft-dev-${CUDA_SHORT/./-} cuda-npp-${CUDA_SHORT/./-}
   #- sudo apt install -y cuda-${CUDA_SHORT/./-}
   - sudo apt install -y cuda-core-${CUDA_SHORT/./-} cuda-cudart-dev-${CUDA_SHORT/./-} cuda-npp-${CUDA_SHORT/./-}  cuda-npp-dev-${CUDA_SHORT/./-} cuda-toolkit-${CUDA_SHORT/./-}
+  - sudo apt-get install -y software-properties-common
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+  - sudo apt update
   - sudo apt install g++-7 -y 
   - sudo apt install gcc-7 -y
   - sudo ln -s /usr/bin/gcc /usr/bin/gcc-7
