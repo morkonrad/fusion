@@ -21,6 +21,7 @@ set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++11 -${opt} -gencode arch=compute_
 #link_directories(${CUDA_TOOLKIT_ROOT_DIR}/lib64)
 #include_directories( lib/inc)
 #CUDA_INCLUDE_DIRECTORIES(/usr/local/cuda/include)
+CUDA_INCLUDE_DIRECTORIES(lib/inc)
 cuda_compile(CUDA_SRC lib/src/DWT_Kernels.cu lib/src/Lap_Pyr_Kernels.cu)
 
 set( npp_libs ${CUDA_npp_LIBRARY} 
