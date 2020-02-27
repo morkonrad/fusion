@@ -6,7 +6,7 @@ It's parallelized implementation of multi-scale image decomposition algorithms. 
 
 Features
 ----------
-- Cuda-based implementation supports aynchronous cuda-streams.
+- Asynchronous cuda-streams.
 - Pipelined-overlap I/O transfers with a computation kernels.
 
 Requierments ?
@@ -20,11 +20,7 @@ How to build ?
   
 How to use it ?
 ----------------
-After successful build and tests, the CoopCL should be ready to go. 
 
-It's header only library so you need to only link whith your app.
-
-Check sample usage/application below.
 
 References
 ------------
