@@ -1,4 +1,4 @@
-# Cuda based image fusion
+# Image fusion on Jetson TX2
 
 What is this ? 
 --------------
