@@ -20,6 +20,7 @@ endif (CMAKE_BUILD_TYPE EQUAL "DEBUG")
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++11 -${opt} -gencode arch=compute_62,code=sm_62)
 link_directories(${CUDA_TOOLKIT_ROOT_DIR}/lib64)   
 include_directories( lib/inc)
+CUDA_INCLUDE_DIRECTORIES(/usr/local/cuda/include)
 cuda_compile(CUDA_SRC lib/src/DWT_Kernels.cu lib/src/Lap_Pyr_Kernels.cu)
 
 set( npp_libs ${CUDA_npp_LIBRARY} 
