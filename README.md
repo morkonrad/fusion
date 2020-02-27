@@ -1,5 +1,5 @@
 # Image fusion on Jetson TX2
-https://travis-ci.org/morkonrad/fusion.svg?branch=master
+
 
 What is this ? 
 --------------
