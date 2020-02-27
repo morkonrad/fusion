@@ -2,7 +2,7 @@
 
 What is this ? 
 --------------
-It's parallelized implementation of multi-scale image decomposition algorithms. Current impl. includes CUDA based Lift-DWT and Mallat-DWT. Additionally there is an initial impl. of Mallat-DWT parallelized with OpenMP for multi-core CPUs. Finally, current impl. accelerates data transfers on Jetson TX2.
+It's parallelized implementation of multi-scale image decomposition algorithms. Current impl. includes CUDA based Lift-DWT and Mallat-DWT. Additionally there is an initial impl. of Mallat-DWT parallelized with OpenMP for multi-core CPUs. Finally, current cuda based software accelerates data transfers on Jetson TX2.
 
 Features
 ----------
