@@ -32,6 +32,6 @@ ENDIF()
 cuda_compile(CUDA_SRC lib/src/DWT_Kernels.cu lib/src/Lap_Pyr_Kernels.cu)
 
 add_library(${PROJECT_NAME} ${CPP_SRC} ${CUDA_SRC})
-#target_link_libraries(${PROJECT_NAME} -lnppicc -lnppial -lnppicom -lnppidei -lnppif -lnppig -lnppim -lnppisu)
+target_link_libraries(${PROJECT_NAME} -lnppicc -lnppial -lnppicom -lnppidei -lnppif -lnppig -lnppim -lnppisu)
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
