@@ -1,5 +1,5 @@
 # Image fusion on Jetson TX2
-
+[![Build Status](https://travis-ci.org/morkonrad/fusion.svg?branch=master)](https://travis-ci.org/morkonrad/fusion)
 
 What is this ? 
 --------------
