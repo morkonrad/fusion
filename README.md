@@ -2,15 +2,18 @@
 
 What is this ? 
 --------------
-It's parallelized implementation of multi-scale image decomposition algorithms. Current impl. includes CUDA based Lift-DWT and Mallat-DWT. Additionally there is also an initial impl. of Mallat-DWT parallelized with OpenMP for multi-core CPUs.   
+It's parallelized implementation of multi-scale image decomposition algorithms. Current impl. includes CUDA based Lift-DWT and Mallat-DWT. Additionally there is also an initial impl. of Mallat-DWT parallelized with OpenMP for multi-core CPUs. Finally, current impl. accelerates data transfers on Jetson TX2.
+
+Features
+----------
+- Cuda-based implementation supports aynchronous cuda-streams.
+- Pipelined-overlap I/O transfers with a computation kernels.
 
 Requierments ?
 ---------------
-1. C++14 compiler
+1. C++11 compiler
 2. CMake 3.x
-3. OpenCL 2.x headers and lib, support for CPU and GPU
-3. GPU driver with OpenCL and SVM_FINE_GRAIN_BUFFER support
-4. For unit-tests CTest
+3. CUDA lib and headers
 
 How to build ?
 ---------------
