@@ -48,4 +48,4 @@ before_script:
     - cmake ..
 
 script:
-  - cmake --build . -j 4 --config Release
+  - cmake --build . -j $nproc --config Release
