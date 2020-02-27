@@ -35,8 +35,9 @@ endif (CMAKE_BUILD_TYPE EQUAL "DEBUG")
 
 #set compute capability
 #set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++11 -${opt} -gencode arch=compute_${cc},code=sm_${cc})
+
 #set compute capability of tx2
-set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++11 -${opt} -gencode arch=compute_50,code=sm_50)
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-std=c++11 -${opt} -gencode arch=compute_62,code=sm_62)
 
 #Specify sources
 file(GLOB CPP_SRC "lib/src/*.cpp")
@@ -47,7 +48,7 @@ cuda_compile(CUDA_SRC lib/src/fusion.cu lib/src/dwt_lift.cu lib/src/fusion_rule.
 if(WITH_OCV)
 list(APPEND OCV_LIBS "opencv_core" "opencv_imgproc" "opencv_imgcodecs" "opencv_highgui")
 add_executable(demo.exe lib/src/main.cpp ${CUDA_SRC})
-target_link_libraries(demo.exe ${OCV_LIBS} cudart cublas)
+target_link_libraries(demo.exe PRIVATE ${OCV_LIBS} cudart cublas)
 endif()
 
 #link cpp objects and cuda object to create target
