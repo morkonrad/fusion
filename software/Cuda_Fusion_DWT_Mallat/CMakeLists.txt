@@ -38,7 +38,7 @@ set( npp_libs ${CUDA_npp_LIBRARY}
 add_library(${PROJECT_NAME} ${CPP_SRC} ${CUDA_SRC})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUDA_INCLUDE_DIRS})  
-target_link_directories(${PROJECT_NAME} PRIVATE ${CUDA_TOOLKIT_ROOT_DIR}/lib64})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${npp_libs})
+target_link_libraries(${PROJECT_NAME} PRIVATE -lnppicc -lnppial -lnppicom -lnppidei -lnppif -lnppig -lnppim -lnppisu)
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${npp_libs})
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
