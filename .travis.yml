@@ -7,6 +7,7 @@ compiler:
 
 matrix:
   include:
+    # CUDA 8 with gcc-7 couldnt work internal cuda-toolkit state!
     #- name: CUDA 8
       #env:
       #- CUDA=8.0.61-1
