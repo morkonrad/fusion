@@ -37,7 +37,8 @@ set( npp_libs ${CUDA_npp_LIBRARY}
 	${CUDA_nppisu_LIBRARY})
 
 add_library(${PROJECT_NAME} ${CPP_SRC} ${CUDA_SRC})
-
+message("CUDA_INC_DIR>>" ${CUDA_INCLUDE_DIRS}
+target_include_directories(${PROJECT_NAME} PRIVATE /usr/local/cuda/include)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUDA_INCLUDE_DIRS})  
 target_link_libraries(${PROJECT_NAME} PRIVATE -lnppicc -lnppial -lnppicom -lnppidei -lnppif -lnppig -lnppim -lnppisu)
 #target_link_libraries(${PROJECT_NAME} PRIVATE ${npp_libs})
