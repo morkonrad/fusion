@@ -2,7 +2,7 @@
 
 What is this ? 
 --------------
-It's parallelized implementation of multi-scale image decomposition algorithms. Current impl. includes CUDA based Lift-DWT and Mallat-DWT. Additionally there is also an initial impl. of Mallat-DWT parallelized with OpenMP for multi-core CPUs. Finally, current impl. accelerates data transfers on Jetson TX2.
+It's parallelized implementation of multi-scale image decomposition algorithms. Current impl. includes CUDA based Lift-DWT and Mallat-DWT. Additionally there is an initial impl. of Mallat-DWT parallelized with OpenMP for multi-core CPUs. Finally, current impl. accelerates data transfers on Jetson TX2.
 
 Features
 ----------
@@ -17,11 +17,13 @@ Requierments ?
 
 How to build ?
 ---------------
-  
-How to use it ?
-----------------
-
-
+1. git clone /dst
+2. cd /dst
+3. mkdir build
+4. cd build
+5. cmake ..
+6. make
+ 
 References
 ------------
 1) Real-time fusion of visible and thermal infrared images in surveillance applications on SoC hardware. https://doi.org/10.1117/12.2325391

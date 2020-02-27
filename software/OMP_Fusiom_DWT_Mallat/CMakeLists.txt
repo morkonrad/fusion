@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 set( Project_NAME dwt_mallat_omp)
 set( LIB_NAME dwt_mallat_omp)
@@ -6,8 +6,8 @@ project(${Project_NAME})
 
 find_package(OpenMP REQUIRED)
 
-set(CMAKE_C_COMPILER /home/nvidia/GCC-8.2.0/bin/gcc)
-set(CMAKE_CXX_COMPILER /home/nvidia/GCC-8.2.0/bin/g++)
+#set(CMAKE_C_COMPILER /home/nvidia/GCC-8.2.0/bin/gcc)
+#set(CMAKE_CXX_COMPILER /home/nvidia/GCC-8.2.0/bin/g++)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")

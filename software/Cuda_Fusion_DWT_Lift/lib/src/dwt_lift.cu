@@ -325,10 +325,10 @@ inline __device__ void Horizontal_Filter_Forward_53_Shuffle(int* TData, int TDSi
     int TDSize_X_index = TDSize_X>>1;
 
     for(int TDSize_Y_index = 0; TDSize_Y_index < TDSize_Y; TDSize_Y_index ++)
-        LStep_1_53_F(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down(TData[TDSize_Y_index*2], 1));
+        LStep_1_53_F(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down_sync(TData[TDSize_Y_index*2], 1,32));
 
     for(int TDSize_Y_index = 0; TDSize_Y_index < TDSize_Y; TDSize_Y_index ++)
-        LStep_2_53_F(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up(TData[(TDSize_Y_index*2)+TDSize_X_index], 1));
+        LStep_2_53_F(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up_sync(TData[(TDSize_Y_index*2)+TDSize_X_index], 1,32));
 }
 
 inline __device__ void Horizontal_Filter_Reverse_53_Shuffle(int* TData, int TDSize_Y, int TDSize_X)
@@ -336,21 +336,22 @@ inline __device__ void Horizontal_Filter_Reverse_53_Shuffle(int* TData, int TDSi
     int TDSize_X_index = TDSize_X>>1;
 
     for(int TDSize_Y_index = 0; TDSize_Y_index < TDSize_Y; TDSize_Y_index ++)
-        LStep_1_53_R(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up(TData[(TDSize_Y_index*2)+TDSize_X_index], 1));
+        LStep_1_53_R(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up_sync(TData[(TDSize_Y_index*2)+TDSize_X_index], 1,32));
 
     for(int TDSize_Y_index = 0; TDSize_Y_index < TDSize_Y; TDSize_Y_index ++)
-        LStep_2_53_R(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down(TData[TDSize_Y_index*2], 1));
+        LStep_2_53_R(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down_sync(TData[TDSize_Y_index*2], 1,32));
 }
 
 inline __device__ void Horizontal_Filter_Forward_97_Shuffle(float* TData, int TDSize_Y, int TDSize_X)
 {
     int TDSize_X_index = TDSize_X>>1;
 
-    for(int TDSize_Y_index = 0; TDSize_Y_index < TDSize_Y; TDSize_Y_index ++){
-        LStep_1_97_F(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down(TData[TDSize_Y_index*2], 1));
-        LStep_2_97_F(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up(TData[(TDSize_Y_index*2)+TDSize_X_index], 1));
-        LStep_3_97_F(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down(TData[TDSize_Y_index*2], 1));
-        LStep_4_97_F(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up(TData[(TDSize_Y_index*2)+TDSize_X_index], 1));
+    for(int TDSize_Y_index = 0; TDSize_Y_index < TDSize_Y; TDSize_Y_index ++)
+    {
+        LStep_1_97_F(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down_sync(TData[TDSize_Y_index*2],1,32));
+        LStep_2_97_F(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up_sync(TData[(TDSize_Y_index*2)+TDSize_X_index], 1,32));
+        LStep_3_97_F(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down_sync(TData[TDSize_Y_index*2], 1,32));
+        LStep_4_97_F(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up_sync(TData[(TDSize_Y_index*2)+TDSize_X_index], 1,32));
 
         TData[(TDSize_Y_index*2)+TDSize_X_index] *= NORMALIZATION_I97_1;
     }
@@ -364,10 +365,10 @@ inline __device__ void Horizontal_Filter_Reverse_97_Shuffle(float* TData, int TD
 
         TData[(TDSize_Y_index*2)+TDSize_X_index] /= NORMALIZATION_I97_1;
 
-        LStep_1_97_R(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up(TData[(TDSize_Y_index*2)+TDSize_X_index], 1));
-        LStep_2_97_R(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down(TData[TDSize_Y_index*2], 1));
-        LStep_3_97_R(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up(TData[(TDSize_Y_index*2)+TDSize_X_index], 1));
-        LStep_4_97_R(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down(TData[TDSize_Y_index*2], 1));
+        LStep_1_97_R(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up_sync(TData[(TDSize_Y_index*2)+TDSize_X_index], 1,32));
+        LStep_2_97_R(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down_sync(TData[TDSize_Y_index*2], 1,32));
+        LStep_3_97_R(TData[(TDSize_Y_index*2)+TDSize_X_index], &TData[TDSize_Y_index*2], __shfl_up_sync(TData[(TDSize_Y_index*2)+TDSize_X_index], 1,32));
+        LStep_4_97_R(TData[TDSize_Y_index*2], &TData[(TDSize_Y_index*2)+TDSize_X_index], __shfl_down_sync(TData[TDSize_Y_index*2], 1,32));
     }
 }
 
@@ -1026,21 +1027,21 @@ static inline void DWT_R2(int DWT_Levels, int DSize_Initial_X, int DSize_Initial
         CUDA_number_blocks = 			(int)ceil((CUDA_number_warps*WARPSIZE)/(float)NTHREADSBLOCK_DWT_R);
 
         Kernel_DWT_R<<<CUDA_number_blocks,NTHREADSBLOCK_DWT_R, SYNTHETIC_SHARED,stream>>>
-                                                                                 (
-                                                                                     DData_Initial,
-                                                                                     DData_Final_aux,
-                                                                                     DSize_Current_X,
-                                                                                     DSize_Initial_X,
-                                                                                     DSize_Current_Y,
-                                                                                     Warps_Row,
-                                                                                     Warps_Column,
-                                                                                     warp_vertical_length_work,
-                                                                                     NTHREADSBLOCK_DWT_R/WARPSIZE,
-                                                                                     Read_LL_offset,
-                                                                                     Write_offset,
-                                                                                     First_Level,
-                                                                                     WRITE
-                                                                                     );
+                                                                                        (
+                                                                                            DData_Initial,
+                                                                                            DData_Final_aux,
+                                                                                            DSize_Current_X,
+                                                                                            DSize_Initial_X,
+                                                                                            DSize_Current_Y,
+                                                                                            Warps_Row,
+                                                                                            Warps_Column,
+                                                                                            warp_vertical_length_work,
+                                                                                            NTHREADSBLOCK_DWT_R/WARPSIZE,
+                                                                                            Read_LL_offset,
+                                                                                            Write_offset,
+                                                                                            First_Level,
+                                                                                            WRITE
+                                                                                            );
         First_Level = 0;
 
         Read_LL_offset += (Write_offset - Read_LL_offset);
